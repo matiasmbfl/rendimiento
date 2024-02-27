@@ -1,0 +1,66 @@
+def obtener_numero_asignaturas():
+  """
+funcion para ingresar cantidad de asignaturas  """
+  continuar = True
+  while continuar:
+    try:
+      numero_asignaturas = int(input("Ingrese la cantidad de asignaturas: "))
+      if numero_asignaturas <= 0:
+        print("El número de asignaturas debe ser mayor que 0.")
+      else:
+        continuar = False
+    except ValueError:
+      print("El número de asignaturas debe ser un número entero.")
+  return numero_asignaturas
+
+def obtener_notas_asignatura(asignatura, numero_asignaturas):
+  """
+funcion para preguntar cantidad de notas  """
+  continuar = True
+  while continuar:
+    try:
+      numero_notas = int(input(f"Ingrese la cantidad de notas a ingresar para {asignatura}: "))
+      if numero_notas <= 0:
+        print("El número de notas debe ser mayor que 0.")
+      else:
+        continuar = False
+    except ValueError:
+      print("El número de notas debe ser un número entero.")
+
+  notas = []
+  for i in range(numero_notas):
+    continuar = True
+    while continuar:
+      try:
+        nota = float(input("Ingrese la nota: "))
+        if nota < 0 or nota > 10:
+          print("La nota debe estar entre 0 y 10.")
+        else:
+          continuar = False
+      except ValueError:
+        print("La nota debe ser un número.")
+
+      notas.append(nota)
+
+  return notas
+
+def calcular_promedio(notas):
+  """
+  Funcion para calcular promedio 
+  """
+  return sum(notas) / len(notas)
+
+def imprimir_rendimiento(asignatura, promedio):
+  """
+  funcion para imprimir el rendimiento
+  """
+  print(f"\n{asignatura}:")
+  print(f"Promedio: {promedio}")
+
+  if promedio < 4:
+    print("Rendimiento deficiente.")
+  elif promedio < 5:
+    print("Rendimiento regular.")
+  else:
+    print("Rendimiento del estudiante es bueno.")
+    
